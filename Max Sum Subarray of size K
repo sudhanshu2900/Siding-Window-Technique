@@ -1,0 +1,26 @@
+PROBLEM: N = 4, K = 2
+         Arr = [100, 200, 300, 400]
+Output:  700
+        
+Explanation: Arr3  + Arr4 =700, which is maximum.
+
+SOLUTION:
+
+int maximumSumSubarray(int K, vector<int> &Arr , int N){
+        
+        int maxSum=0;
+        for(int i=0;i<K;i++){
+            maxSum+=Arr[i];
+        }
+        int ansSum=maxSum;
+        for(int i=K;i<N;i++){
+            maxSum+=(Arr[i]-Arr[i-K]);
+            ansSum=max(ansSum,maxSum);
+        }
+        return ansSum;
+    }
+    
+    
+    
+    
+    
