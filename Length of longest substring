@@ -1,0 +1,40 @@
+PROBLEM: Given a string S, find the length of the longest substring without repeating characters.
+
+Input:
+S = "geeksforgeeks"
+Output:7
+
+Explanation:
+Longest substring is "eksforg".
+
+
+SOLUTION:
+
+int longestUniqueSubsttr(string S){
+        int len = 0, cnt = 0;
+        string str = "";
+        
+        for(int i=0; i<S.size(); i++){
+            if(str.find(S[i]) != string::npos){
+                int index = str.find(S[i]);
+                if(len < cnt) len = cnt;
+                
+                str.erase(str.begin(), str.begin()+(index+1));
+                str.push_back(S[i]);
+                cnt = str.size();
+                if(len < cnt) len=cnt;
+            }
+            if(str.find(S[i]) == string::npos){
+                str.push_back(S[i]);
+                cnt++;
+            }
+        }
+        if(len < cnt) len = cnt;
+        return len;
+    }
+    
+    
+    
+    
+    
+    
